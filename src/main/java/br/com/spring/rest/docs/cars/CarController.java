@@ -21,11 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
 
 	public static final String API_ROOT_RESOURCE = "/cars";
-
 	public static final String SEARCH_RESOURCE = "/search";
-
 	public static final String PARAM_ID = "id";
-
 	public static final String PARAM_MODEL_NAME = "brand";
 
 	private List<Car> cars;

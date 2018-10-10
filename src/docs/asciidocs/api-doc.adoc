@@ -1,30 +1,134 @@
-== Retrieve all cars
+= Spring Rest Docs Documentation
+Weslley;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
 
-Example of curl command:
-include::{snippets}/CarControllerRestDocsTest/getAll/curl-request.adoc[]
+[[overview]]
+= Overview
 
-Example of http request:
+[[overview-http-verbs]]
+== HTTP verbs
+
+RESTful standard HTTP and REST conventions in its use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PATCH`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+RESTful standard HTTP and REST conventions in its use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[resources]]
+= Resources
+
+[[resources-cars]]
+== Cars
+
+Resource that manage ours cars
+
+=== List all cars
+
+This `GET` request is used to access a car's list
+
+==== Request structure
+
 include::{snippets}/CarControllerRestDocsTest/getAll/http-request.adoc[]
 
-Example of http response:
+==== Response structure
+
 include::{snippets}/CarControllerRestDocsTest/getAll/http-response.adoc[]
 
-Response body:
+==== Response body
+
 include::{snippets}/CarControllerRestDocsTest/getAll/response-body.adoc[]
 
-Response fields:
+==== Response fields
+
 include::{snippets}/CarControllerRestDocsTest/getAll/response-fields.adoc[]
 
-== Retrieve one car by its identifier
+==== CURL request
 
-Path Parameters:
+include::{snippets}/CarControllerRestDocsTest/getAll/curl-request.adoc[]
+
+=== Search one car by its identifier
+
+This `GET` request is used to access a unique car
+
+==== Request structure
+
+include::{snippets}/CarControllerRestDocsTest/getById/http-request.adoc[]
+
+==== Path parameters
 
 include::{snippets}/CarControllerRestDocsTest/getById/path-parameters.adoc[]
 
-Response fields:
+==== Response structure
+
+include::{snippets}/CarControllerRestDocsTest/getById/http-response.adoc[]
+
+==== Response body
+
+include::{snippets}/CarControllerRestDocsTest/getById/response-body.adoc[]
+
+==== Response fields
+
 include::{snippets}/CarControllerRestDocsTest/getById/response-fields.adoc[]
 
-== Create a new car
+==== CURL request
 
-Request fields:
+include::{snippets}/CarControllerRestDocsTest/getById/curl-request.adoc[]
+
+=== Create a new car
+
+This `POST` request is used to create a new car
+
+==== Request structure
+
+include::{snippets}/CarControllerRestDocsTest/create/http-request.adoc[]
+
+==== Request body
+
+include::{snippets}/CarControllerRestDocsTest/create/request-body.adoc[]
+
+==== Request fields
+
 include::{snippets}/CarControllerRestDocsTest/create/request-fields.adoc[]
+
+==== Response structure
+
+include::{snippets}/CarControllerRestDocsTest/create/http-response.adoc[]
