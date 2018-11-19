@@ -1,4 +1,4 @@
-= Spring Rest Docs Documentation
+= Spring Rest Docs - Documentação
 Weslley;
 :doctype: book
 :icons: font
@@ -8,127 +8,130 @@ Weslley;
 :sectlinks:
 
 [[overview]]
-= Overview
+= Visão geral
 
 [[overview-http-verbs]]
-== HTTP verbs
+== Verbos HTTP
 
-RESTful standard HTTP and REST conventions in its use of HTTP verbs.
+Padronização e convenções RESTful no uso dos verbos HTTP
 
 |===
-| Verb | Usage
+| Verbo | Utilização
 
 | `GET`
-| Used to retrieve a resource
+| Utilizado para recuperar um recurso
 
 | `POST`
-| Used to create a new resource
+| Utilizado para criar um novo recurso
+
+| `PUT`
+| Utilizado quando se deseja atualizar um recurso como um todo
 
 | `PATCH`
-| Used to update an existing resource, including partial updates
+| Utilizado quando o objetivo é atualizar alguns campos de um recurso
 
 | `DELETE`
-| Used to delete an existing resource
+| Utilizado para remover um recurso
 |===
 
-RESTful standard HTTP and REST conventions in its use of HTTP status codes.
+Padronização e convenções RESTful no uso dos códigos de status HTTP
 
 |===
-| Status code | Usage
+| Código de status | Utilização
 
 | `200 OK`
-| The request completed successfully
+| A requisição foi processada com sucesso
 
 | `201 Created`
-| A new resource has been created successfully. The resource's URI is available from the response's
-`Location` header
+| Novo recurso criado com sucesso
 
 | `204 No Content`
-| An update to an existing resource has been applied successfully
+| A atualização do recurso foi processada com sucesso
+
 
 | `400 Bad Request`
-| The request was malformed. The response body will include an error providing further information
+| A requisição não pôde ser processada. O corpo da resposta deverá conter a descrição do motivo
 
 | `404 Not Found`
-| The requested resource did not exist
+| O recurso solicitado não existe
 |===
 
 [[resources]]
-= Resources
+= Recursos
 
 [[resources-cars]]
-== Cars
+== Carros
 
-Resource that manage ours cars
+Recurso responsável pelo gerenciamento dos carros
 
-=== List all cars
+=== Lista de todos os carros
 
-This `GET` request is used to access a car's list
+Esta requisição `GET` deve ser utilizada para a listagem de todos os carros
 
-==== Request structure
+==== Estrutura da requisição
 
-include::{snippets}/CarControllerRestDocsTest/getAll/http-request.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/listar/http-request.adoc[]
 
-==== Response structure
+==== Estrutura da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getAll/http-response.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/listar/http-response.adoc[]
 
-==== Response body
+==== Corpo da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getAll/response-body.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/listar/response-body.adoc[]
 
-==== Response fields
+==== Campos da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getAll/response-fields.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/listar/response-fields.adoc[]
 
-==== CURL request
+==== Requisição CURL
 
-include::{snippets}/CarControllerRestDocsTest/getAll/curl-request.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/listar/curl-request.adoc[]
 
-=== Search one car by its identifier
+=== Buscar um carro pelo identificador
 
-This `GET` request is used to access a unique car
+Esta requisição `GET` deve ser utilizada para acessar um carro específico, através de seu identificador único
 
-==== Request structure
+==== Estrutura da requisição
 
-include::{snippets}/CarControllerRestDocsTest/getById/http-request.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/http-request.adoc[]
 
-==== Path parameters
+==== Parâmetros de caminho
 
-include::{snippets}/CarControllerRestDocsTest/getById/path-parameters.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/path-parameters.adoc[]
 
-==== Response structure
+==== Estrutura da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getById/http-response.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/http-response.adoc[]
 
-==== Response body
+==== Corpo da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getById/response-body.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/response-body.adoc[]
 
-==== Response fields
+==== Campos da resposta
 
-include::{snippets}/CarControllerRestDocsTest/getById/response-fields.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/response-fields.adoc[]
 
-==== CURL request
+==== Requisição CURL
 
-include::{snippets}/CarControllerRestDocsTest/getById/curl-request.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/buscarPorId/curl-request.adoc[]
 
-=== Create a new car
+=== Criar um novo carro
 
-This `POST` request is used to create a new car
+Esta requisição `POST` deve ser utilizada para criar um novo carro
 
-==== Request structure
+==== Estrutura da requisição
 
-include::{snippets}/CarControllerRestDocsTest/create/http-request.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/salvar/http-request.adoc[]
 
-==== Request body
+==== Campos da requisição
 
-include::{snippets}/CarControllerRestDocsTest/create/request-body.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/salvar/request-fields.adoc[]
 
-==== Request fields
+==== Estrutura da resposta
 
-include::{snippets}/CarControllerRestDocsTest/create/request-fields.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/salvar/http-response.adoc[]
 
-==== Response structure
+==== Corpo da resposta
 
-include::{snippets}/CarControllerRestDocsTest/create/http-response.adoc[]
+include::{snippets}/CarroControllerRestDocsTest/salvar/request-body.adoc[]

@@ -1,4 +1,4 @@
-package br.com.spring.rest.docs.cars;
+package br.com.spring.rest.docs.carros;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,12 +20,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.spring.rest.docs.cars.CarController;
-import br.com.spring.rest.docs.cars.description.CarDescription;
+import br.com.spring.rest.docs.carros.CarroController;
+import br.com.spring.rest.docs.carros.CarroDTO;
+import br.com.spring.rest.docs.carros.descricao.CarroDescricao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
-public class CarControllerRestDocsTest {
+public class CarroControllerRestDocsTest {
 
 	private MockMvc mockMvc;
 
@@ -39,45 +40,45 @@ public class CarControllerRestDocsTest {
 
 	@Before
 	public void before() {
-		mockMvc = MockMvcBuilders.standaloneSetup(new CarController())
+		mockMvc = MockMvcBuilders.standaloneSetup(new CarroController())
 				.apply(MockMvcRestDocumentation.documentationConfiguration(this.restDocumentation)).build();
 	}
 
 	@Test
-	public void getAll() throws Exception {
+	public void listar() throws Exception {
 		mockMvc.perform(RestDocumentationRequestBuilders
-				.get(CarController.API_ROOT_RESOURCE).accept(MediaType.APPLICATION_JSON))
+				.get(CarroController.API_ROOT_RESOURCE).accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(MockMvcRestDocumentation.document("{ClassName}/{methodName}",
 						PayloadDocumentation
-								.responseFields(PayloadDocumentation.fieldWithPath("[]").description("Array of cars"))
-								.andWithPrefix("[]", CarDescription.car())));
+								.responseFields(PayloadDocumentation.fieldWithPath("[]").description("Lista de carros"))
+								.andWithPrefix("[]", CarroDescricao.carro())));
 	}
 
 	@Test
-	public void getById() throws Exception {
+	public void buscarPorId() throws Exception {
 		mockMvc.perform(RestDocumentationRequestBuilders
-				.get(CarController.API_ROOT_RESOURCE + "/{" + CarController.PARAM_ID + "}", 1)
+				.get(CarroController.API_ROOT_RESOURCE + "/{" + CarroController.PARAM_ID + "}", 1)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(MockMvcResultMatchers.status().isOk())
 				.andDo(MockMvcRestDocumentation.document("{ClassName}/{methodName}",
-						PayloadDocumentation.responseFields(CarDescription.car()),
+						PayloadDocumentation.responseFields(CarroDescricao.carro()),
 						RequestDocumentation.pathParameters(RequestDocumentation
-								.parameterWithName(CarController.PARAM_ID).description("Car's id"))));
+								.parameterWithName(CarroController.PARAM_ID).description("Identificador do carro"))));
 	}
 
 	@Test
-	public void create() throws Exception {
-		CarDTO dto = new CarDTO();
-		dto.setBrand("Bugatti");
-		dto.setModel("Chiron");
-		dto.setYear(2017);
-		dto.setLicensePlate("FUK1988");
+	public void salvar() throws Exception {
+		CarroDTO dto = new CarroDTO();
+		dto.setMarca("Bugatti");
+		dto.setModelo("Chiron");
+		dto.setAno(2017);
+		dto.setPlaca("FUK1988");
 		ObjectMapper mapper = new ObjectMapper();
 		String content = mapper.writeValueAsString(dto);
-		mockMvc.perform(RestDocumentationRequestBuilders.post(CarController.API_ROOT_RESOURCE)
+		mockMvc.perform(RestDocumentationRequestBuilders.post(CarroController.API_ROOT_RESOURCE)
 				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON).content(content))
 				.andExpect(MockMvcResultMatchers.status().isCreated()).andDo(MockMvcRestDocumentation.document(
-						"{ClassName}/{methodName}", PayloadDocumentation.requestFields(CarDescription.carPost())));
+						"{ClassName}/{methodName}", PayloadDocumentation.requestFields(CarroDescricao.carroPost())));
 	}
 
 }
